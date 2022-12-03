@@ -73,12 +73,14 @@ Console.WriteLine();
 }
 
 double [] GetAverageByColumn(int[,] arrayToGetAverage){
-    double [] avgByColumns = new double [arrayToGetAverage.GetLength(0)];
+    double [] avgByColumns = new double [arrayToGetAverage.GetLength(1)];
     for(int i = 0; i < arrayToGetAverage.GetLength(0); i++){
         for(int j = 0; j < arrayToGetAverage.GetLength(1); j++){
-            avgByColumns[i] += Convert.ToDouble(arrayToGetAverage[i,j]);
+            avgByColumns[j] += Convert.ToDouble(arrayToGetAverage[i,j]);
         }
-        avgByColumns[i] /= arrayToGetAverage.GetLength(1);
+    }
+    for(int i = 0; i < avgByColumns.Length; i++){
+        avgByColumns[i] /= arrayToGetAverage.GetLength(0);
     }
     return avgByColumns;
 }
